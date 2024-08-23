@@ -2,6 +2,7 @@ import express from "express";
 import { checkSchema, matchedData, validationResult } from "express-validator";
 import { posts } from "./utils/constants.mjs";
 import { validationSchemas } from "./utils/validationSchemas.mjs";
+import { resolvePostsIndex } from "./utils/middleWares.mjs";
 
 const app = express();
 app.use(express.json());
@@ -19,7 +20,7 @@ app.get("/posts", (req, res) => {
   res.status(200).send(posts);
 });
 
-app.get("posts/:id", (req, res) => {
+app.get("/posts/:id", (req, res) => {
   console.log(req.method, "-", req.originalUrl);
   const parsedId = parseInt(req.params.id);
   if (isNaN(parsedId))
@@ -47,6 +48,16 @@ app.post("/posts", checkSchema(validationSchemas), (req, res) => {
   };
   posts.push(newPost);
   res.status(201).send(newPost);
+});
+
+app.put("/posts/:id", resolvePostsIndex, (req, res) => {
+  const { body, foundPost } = req;
+  posts[foundPost] = {
+    id: posts[foundPost].id,
+    updatedAt: new Date().toString(),
+    ...body,
+  };
+  res.sendStatus(200);
 });
 
 app.listen(PORT, () => {
