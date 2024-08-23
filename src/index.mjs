@@ -60,6 +60,12 @@ app.put("/posts/:id", resolvePostsIndex, (req, res) => {
   res.sendStatus(200);
 });
 
+app.delete("/posts/:id", resolvePostsIndex, (req, res) => {
+  const { foundPost } = req;
+  posts.splice(foundPost, 1);
+  res.sendStatus(200);
+});
+
 app.listen(PORT, () => {
   console.log(`Server is listening on PORT ${PORT}`);
 });

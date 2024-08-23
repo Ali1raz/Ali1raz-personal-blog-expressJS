@@ -5,13 +5,13 @@
   },
   "name": "new-folder",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.mjs",
   "devDependencies": {
     "nodemon": "^3.1.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon ./src/index.mjs",
+    "start:dev": "nodemon --env-file=.env ./src/index.mjs",
     "start": "node ./src/index.mjs"
   },
   "author": "",

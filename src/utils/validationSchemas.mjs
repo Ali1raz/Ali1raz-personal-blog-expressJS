@@ -3,9 +3,9 @@ export const validationSchemas = {
     isLength: {
       options: {
         min: 5,
-        max: 12,
+        max: 20,
       },
-      errorMessage: "title must be 5-12 characters",
+      errorMessage: "title must be 5-20 characters",
     },
     notEmpty: {
       errorMessage: "title cant be empty",
