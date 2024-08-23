@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "name": "new-folder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon ./src/index.mjs",
+    "start": "node ./src/index.mjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "tyPe": "module"
+}
